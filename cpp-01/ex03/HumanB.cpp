@@ -6,13 +6,13 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 21:52:50 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/13 23:27:18 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:33:47 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name)
+HumanB::HumanB(std::string name) : _name(name) , _weapon(NULL)
 {
 }
 

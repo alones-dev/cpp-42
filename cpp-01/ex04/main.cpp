@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 23:32:23 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/16 09:37:46 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:49:04 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ int main(int ac, char **av)
         std::cout << "\033[0;31mError: wrong number of arguments\033[0m" << std::endl;
         return (1);
     }
-    
+    if (av[2][0] == '\0' || av[3][0] == '\0')
+    {
+        std::cout << "\033[0;31mError: empty string\033[0m" << std::endl;
+        return (1);
+    }
+
     std::string filename = av[1];
     std::string s1 = av[2];
     std::string s2 = av[3];

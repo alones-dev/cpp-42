@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 22:31:25 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/13 22:36:13 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:46:17 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 Zombie* zombieHorde(int N, std::string name)
 {
+    if (N <= 0)
+        return (NULL);
     Zombie *horde = new Zombie[N];
     
     for (int i = 0; i < N; i++)
