@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 23:32:23 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/15 14:01:54 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/16 09:37:46 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,26 @@ int main(int ac, char **av)
         return (1);
     }
 
-    std::string line;
-    while (std::getline(inputFile, line))
+    while (inputFile.good())
     {
+        std::string line;
+        std::size_t found;
+        
+        std::getline(inputFile, line);
+        found = line.find(s1);
+        
+        while (found != std::string::npos && found < line.length())
+        {
+            line.erase(found, s1.length());
+            line.insert(found, s2);
+            found = line.find(s1);
+        }
+        
         outputFile << line << std::endl;
     }
 
     inputFile.close();
     outputFile.close();
+
+    std::cout << "\033[0;32m✅ File copied\033[0m" << std::endl;
 }
