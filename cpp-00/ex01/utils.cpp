@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:06:18 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/13 14:09:23 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:25:48 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,14 @@ std::string trunc_word(std::string word)
 		word += ".";
 	}
 	return (word);
+}
+
+bool is_valid_word(std::string word)
+{
+	for (unsigned long i = 0; i < word.length(); i++)
+	{
+		if (word[i] > 0 && word[i] < 32)
+			return (false);
+	}
+	return (true);
 }

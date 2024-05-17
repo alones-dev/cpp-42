@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 09:54:28 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/13 14:54:38 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/17 09:26:41 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ std::string PhoneBook::_get_input(std::string msg)
 			break;
 		if (input.empty())
 			std::cout << "\033[0;31m❌ Input can't be empty\033[0m" << std::endl;
+		else if (!is_valid_word(input))
+			std::cout << "\033[0;31m❌ Invalid input\033[0m" << std::endl;
 		else
 			isValid = true;
 		if (msg == "Phone number: ")
