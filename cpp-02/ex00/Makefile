@@ -26,7 +26,7 @@ WHITE			=	\033[1;37m
 #                                   PROGRAM                                    #
 # **************************************************************************** #
 
-NAME			=	zombie
+NAME			=	fixed
 
 # **************************************************************************** #
 #                                   COMPILER                                   #
@@ -47,13 +47,11 @@ OBJ_PATH		=	.obj
 # **************************************************************************** #
 
 HEADERS			=	$(addsuffix .hpp, \
-					Zombie)
+					Fixed)
 
 SRCS 			=	$(addsuffix .cpp, \
-					main \
-					newZombie \
-					Zombie \
-					randomChump)
+					Fixed \
+					main)
 
 OBJS			=	$(SRCS:%.cpp=$(OBJ_PATH)/%.o)
 
