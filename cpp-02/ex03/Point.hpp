@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:43:53 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/17 13:51:40 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/19 22:28:12 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class Point
 
 		Fixed getX() const;
 		Fixed getY() const;
+		float getXFloat() const;
+		float getYFloat() const;
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
