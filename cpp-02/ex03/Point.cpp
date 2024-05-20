@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:44:12 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/19 22:28:18 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:17:49 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,4 @@ Fixed Point::getX() const
 Fixed Point::getY() const
 {
 	return (this->_y);
-}
-
-float Point::getXFloat() const
-{
-	return (this->_x.toFloat());
-}
-
-float Point::getYFloat() const
-{
-	return (this->_y.toFloat());
 }
