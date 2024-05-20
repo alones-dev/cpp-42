@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:44:12 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/20 13:17:49 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:31:07 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Point::Point() : _x(0), _y(0)
 {
 }
 
-Point::Point(Fixed const x, Fixed const y) : _x(x), _y(y)
+Point::Point(const float x, const float y) : _x(x), _y(y)
 {
 }
 
@@ -46,4 +46,10 @@ Fixed Point::getX() const
 Fixed Point::getY() const
 {
 	return (this->_y);
+}
+
+std::ostream&   operator<<(std::ostream& os, const Point& rhs)
+{
+    os << "(" << rhs.getX() << ", " << rhs.getY() << ")";
+    return os;
 }

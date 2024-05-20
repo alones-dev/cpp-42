@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 21:52:50 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/19 22:34:02 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/20 19:29:24 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,30 @@
 
 int main(void)
 {
-    std::cout << "Triangle with integer coordinates" << std::endl;
-	if (bsp(Point(0, 0), Point(50, 100), Point(100, 0), Point(50, 50))) {
-        std::cout << "Point is in the triangle" << std::endl;
-    } else {
-        std::cout << "Point is not in the triangle" << std::endl;
-    }
-    std::cout << "Triangle with float coordinates" << std::endl;
-    if (bsp(Point(0.5f, 0.5f), Point(1.5f, 1.0f), Point(2.0f, 0.5f), Point(1.0f, 0.75f))) {
-        std::cout << "Point is in the triangle" << std::endl;
-    } else {
-        std::cout << "Point is not in the triangle" << std::endl;
-    }
-    std::cout << "Triangle with combination of integer and float coordinates" << std::endl;
-    if (bsp(Point(0.5f, 0), Point(46.0f, 100), Point(97.89f, 0), Point(35.0f, 48.5f))) {
-        std::cout << "Point is in the triangle" << std::endl;
-    } else {
-        std::cout << "Point is not in the triangle" << std::endl;
-    }
+    Point   a(0, 0);
+    Point   b(3, 3);
+    Point   c(-3, 3);
+
+    Point   point1(1.5, 1.5);
+    Point   point2(2.9, 2.9);
+    Point   point3(-3, 2.99);
+    Point   point4(4, 1);
+
+    std::cout << std::endl << "--- First test -> Success ---" << std::endl;
+    std::cout << "Is point " << point1 << " inside the triangle: " << (bsp(a, b, c, point1) ? "Yes" : "No") << std::endl;
+    std::cout << "-----------------------------" << std::endl;
+
+    std::cout << std::endl << "--- Second test -> Success ---" << std::endl;
+    std::cout << "Is point " << point2 << " inside the triangle: " << (bsp(a, b, c, point2) ? "Yes" : "No") << std::endl;
+    std::cout << "-----------------------------" << std::endl;
+
+    std::cout << std::endl << "--- Third test -> Failure ---" << std::endl;
+    std::cout << "Is point " << point3 << " inside the triangle: " << (bsp(a, b, c, point3) ? "Yes" : "No") << std::endl;
+    std::cout << "-----------------------------" << std::endl;
+
+    std::cout << std::endl << "--- Fourth test -> Failure ---" << std::endl;
+    std::cout << "Is point " << point4 << " inside the triangle: " << (bsp(a, b, c, point4) ? "Yes" : "No") << std::endl;
+    std::cout << "-----------------------------" << std::endl << std::endl;
+    
     return (0);
 }
