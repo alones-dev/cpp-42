@@ -26,7 +26,7 @@ WHITE			=	\033[1;37m
 #                                   PROGRAM                                    #
 # **************************************************************************** #
 
-NAME			=	polymorphism
+NAME			=	brain
 
 # **************************************************************************** #
 #                                   COMPILER                                   #
@@ -48,11 +48,13 @@ OBJ_PATH		=	.obj
 
 HEADERS			=	$(addsuffix .hpp, \
 					Animal \
+					Brain \
 					Cat \
 					Dog)
 
 SRCS 			=	$(addsuffix .cpp, \
 					Animal \
+					Brain \
 					Cat \
 					Dog \
 					main)

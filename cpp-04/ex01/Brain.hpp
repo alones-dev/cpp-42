@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 10:05:11 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 11:31:24 by kdaumont         ###   ########.fr       */
+/*   Created: 2024/05/23 11:09:15 by kdaumont          #+#    #+#             */
+/*   Updated: 2024/05/23 11:16:09 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-int main(void)
+#include <iostream>
+
+class Brain
 {
-	Animal *animals[10];
-	
-	for (int i = 0; i < 10; i++)
-	{
-		if (i % 2 == 0)
-			animals[i] = new Dog();
-		else
-			animals[i] = new Cat();
-	}
+	public:
+		Brain();
+		Brain(Brain const &cpy);
+		virtual ~Brain();
+		
+		Brain &operator=(Brain const &rhs);
+	private:
+		std::string _ideas[100];	
+};
 
-	for (int i = 0; i < 10; i++)
-		animals[i]->makeSound();
-
-	for (int i = 0; i < 10; i++)
-		delete animals[i];
-
-	return 0;
-}
+#endif

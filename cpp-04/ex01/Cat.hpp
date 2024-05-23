@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:39:16 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 09:53:56 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:16:46 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
@@ -26,6 +27,8 @@ class Cat : public Animal
 		Cat &operator=(Cat const &rhs);
 
 		virtual void makeSound() const;
+	private:
+		Brain *_brain;
 };
 
 #endif
