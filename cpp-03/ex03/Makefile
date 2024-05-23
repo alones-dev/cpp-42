@@ -26,7 +26,7 @@ WHITE			=	\033[1;37m
 #                                   PROGRAM                                    #
 # **************************************************************************** #
 
-NAME			=	FragTrap
+NAME			=	DiamondTrap
 
 # **************************************************************************** #
 #                                   COMPILER                                   #
@@ -49,12 +49,14 @@ OBJ_PATH		=	.obj
 HEADERS			=	$(addsuffix .hpp, \
 					ScavTrap \
 					FragTrap \
+					DiamondTrap \
 					ClapTrap)
 
 SRCS 			=	$(addsuffix .cpp, \
 					ScavTrap \
-					ClapTrap \
 					FragTrap \
+					ClapTrap \
+					DiamondTrap \
 					main)
 
 OBJS			=	$(SRCS:%.cpp=$(OBJ_PATH)/%.o)
