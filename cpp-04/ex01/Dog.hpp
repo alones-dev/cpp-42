@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:39:16 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 11:17:07 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/29 09:18:21 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Dog : public Animal
 		Dog &operator=(Dog const &rhs);
 
 		virtual void makeSound() const;
+		Brain* getBrain() const;
 	private:
 		Brain *_brain;
 };

@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:39:27 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 11:18:13 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/29 09:26:11 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,21 @@ Cat &Cat::operator=(Cat const &rhs)
 {
 	std::cout << "Cat Assignation operator called" << std::endl;
 	if (this != &rhs)
+	{
 		this->_type = rhs.getType();
+		this->_brain = new Brain();
+		for (int i = 0; i < 100; i++)
+			this->_brain->setIdea(i, rhs.getBrain()->getIdea(i));
+	}
 	return (*this);
 }
 
 void Cat::makeSound() const
 {
 	std::cout << "Meoooww..." << std::endl;	
+}
+
+Brain* Cat::getBrain() const
+{
+	return (this->_brain);
 }

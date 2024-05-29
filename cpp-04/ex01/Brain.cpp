@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:10:47 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 11:12:52 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/29 09:12:17 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,17 @@ Brain &Brain::operator=(Brain const &rhs)
 		for (int i = 0; i < 100; i++)
 			this->_ideas[i] = rhs._ideas[i];
 	return (*this);
+}
 
+void Brain::setIdea(int index, std::string idea)
+{
+	if (index >= 0 && index < 100)
+		this->_ideas[index] = idea;
+}
+
+std::string Brain::getIdea(int index) const
+{
+	if (index >= 0 && index < 100)
+		return (this->_ideas[index]);
+	return (NULL);
 }
