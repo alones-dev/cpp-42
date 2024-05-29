@@ -47,19 +47,19 @@ OBJ_PATH		=	.obj
 # **************************************************************************** #
 
 HEADERS			=	$(addsuffix .hpp, \
-					Animal \
 					WrongAnimal \
+					Animal \
 					Brain \
 					WrongCat \
 					Cat \
 					Dog)
 
 SRCS 			=	$(addsuffix .cpp, \
-					WrongAnimal \
 					Animal \
+					WrongAnimal \
 					Brain \
-					WrongCat \
 					Cat \
+					WrongCat \
 					Dog \
 					main)
 
