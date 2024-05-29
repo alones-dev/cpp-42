@@ -6,34 +6,34 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:34:56 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/29 09:17:51 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/29 11:29:55 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal()
+AAnimal::AAnimal()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : _type(type)
+AAnimal::AAnimal(std::string type) : _type(type)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Animal::Animal(Animal const &cpy)
+AAnimal::AAnimal(AAnimal const &cpy)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = cpy;
 }
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
 	std::cout << "Destructor called" << std::endl;
 }
 
-Animal &Animal::operator=(Animal const &rhs)
+AAnimal &AAnimal::operator=(AAnimal const &rhs)
 {
 	std::cout << "Assignation operator called" << std::endl;
 	if (this != &rhs)
@@ -41,12 +41,12 @@ Animal &Animal::operator=(Animal const &rhs)
 	return (*this);
 }
 
-std::string Animal::getType() const
+std::string AAnimal::getType() const
 {
 	return (this->_type);
 }
 
-void Animal::makeSound() const
+void AAnimal::makeSound() const
 {
-	std::cout << "Basic animal sound..." << std::endl;	
+	std::cout << "Basic AAnimal sound..." << std::endl;	
 }
