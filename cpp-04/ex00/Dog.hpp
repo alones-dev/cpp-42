@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:39:16 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 09:53:51 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:19:32 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Dog : public Animal
 	public:
 		Dog();
 		Dog(Dog const &cpy);
-		~Dog();
+		virtual ~Dog();
 
 		Dog &operator=(Dog const &rhs);
 

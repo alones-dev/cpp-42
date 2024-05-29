@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:26:36 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/29 10:11:23 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:20:51 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class WrongAnimal
 		WrongAnimal();
 		WrongAnimal(std::string type);
 		WrongAnimal(WrongAnimal const &cpy);
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 
 		WrongAnimal &operator=(WrongAnimal const &rhs);
 

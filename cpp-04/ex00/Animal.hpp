@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:26:36 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 10:06:00 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:20:15 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Animal
 		Animal();
 		Animal(std::string type);
 		Animal(Animal const &cpy);
-		~Animal();
+		virtual ~Animal();
 
 		Animal &operator=(Animal const &rhs);
 

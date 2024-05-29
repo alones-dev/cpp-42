@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:39:16 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 09:53:56 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:19:46 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Cat : public Animal
 	public:
 		Cat();
 		Cat(Cat const &cpy);
-		~Cat();
+		virtual ~Cat();
 
 		Cat &operator=(Cat const &rhs);
 
