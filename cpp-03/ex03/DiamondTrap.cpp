@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 08:44:05 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/23 09:10:39 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:25:30 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ DiamondTrap &DiamondTrap::operator=(DiamondTrap const &rhs)
 		this->_attack_damage = rhs.get_attack_damage();
 	}
 	return (*this);
+}
+
+std::string DiamondTrap::get_name(void) const
+{
+	return (this->_name);
 }
 
 void DiamondTrap::attack(std::string const &target)

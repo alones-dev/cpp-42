@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 08:44:03 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/31 15:11:40 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:22:28 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ int main()
 
     std::cout << std::endl;
     diamond.whoAmI();
+
+    std::cout << std::endl << std::endl;
+    DiamondTrap   diamond2(diamond);
+    diamond2.whoAmI();
 
     std::cout << std::endl;
     return (0);
