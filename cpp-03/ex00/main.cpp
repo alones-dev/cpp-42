@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 08:44:03 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/22 09:18:07 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:11:07 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 int main()
 {
-	ClapTrap a("Bob");
-	ClapTrap b("John");
+    ClapTrap    a("Jhon Smith");
+    ClapTrap    b("Rawid Jeremy");
 
-	a.attack("John");
-	b.takeDamage(5);
-	b.beRepaired(5);
-	b.beRepaired(5);
-	b.beRepaired(5);
-	b.attack("Bob");
-	a.takeDamage(5);
-	b.attack("Bob");
-	a.takeDamage(5);
-	b.attack("Bob");
-	a.takeDamage(5);
-	a.attack("John");
-	a.beRepaired(5);
+    std::cout << std::endl;
+
+    a.attack("Rawid Jeremy");
+    a.takeDamage(10);
+    a.takeDamage(10);
+    a.beRepaired(5);
+    a.attack("Rawid Jeremy");
+
+    std::cout << std::endl;
+
+    b.beRepaired(3);
+    b.attack("Jhon Smith");
+    b.attack("Jhon Smith");
+    b.attack("Jhon Smith");
+    b.beRepaired(3);
+
+    std::cout << std::endl;
 }
