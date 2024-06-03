@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:00:49 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/03 14:04:38 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:49:39 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ MateriaSource &MateriaSource::operator=(MateriaSource const &rhs)
 
 void MateriaSource::learnMateria(AMateria *m)
 {
+	if (!m)
+	{
+		std::cout << "Invalid materia" << std::endl;
+		return ;
+	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (!this->_source[i])

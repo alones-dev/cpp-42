@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 09:57:34 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/03 13:58:50 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:45:19 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria* m)
 {
+	if (!m)
+	{
+		std::cout << "Invalid materia" << std::endl;
+		return;
+	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (!this->_inventory[i])
