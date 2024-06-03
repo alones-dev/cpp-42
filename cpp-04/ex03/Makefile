@@ -47,20 +47,20 @@ OBJ_PATH		=	.obj
 # **************************************************************************** #
 
 HEADERS			=	$(addsuffix .hpp, \
-					WrongAnimal \
-					AAnimal \
-					Brain \
-					WrongCat \
-					Cat \
-					Dog)
+					AMateria \
+					Character \
+					Cure \
+					Ice \
+					ICharacter \
+					IMateriaSource \
+					MateriaSource)
 
 SRCS 			=	$(addsuffix .cpp, \
-					AAnimal \
-					WrongAnimal \
-					Brain \
-					Cat \
-					WrongCat \
-					Dog \
+					AMateria \
+					Character \
+					Cure \
+					Ice \
+					MateriaSource \
 					main)
 
 OBJS			=	$(SRCS:%.cpp=$(OBJ_PATH)/%.o)

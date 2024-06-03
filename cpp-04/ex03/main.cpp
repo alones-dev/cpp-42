@@ -6,11 +6,16 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 12:27:58 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/29 12:30:33 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 11:27:39 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "Character.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 
 int main(void)
 {
