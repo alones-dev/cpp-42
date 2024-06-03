@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:10:47 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/29 09:12:17 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:05:38 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ std::string Brain::getIdea(int index) const
 {
 	if (index >= 0 && index < 100)
 		return (this->_ideas[index]);
-	return (NULL);
+	return ("Doesn't exist");
 }

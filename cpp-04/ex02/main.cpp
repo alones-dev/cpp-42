@@ -6,18 +6,18 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:05:11 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/29 09:28:48 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:14:17 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "Brain.hpp"
 
 int main(void)
 {
-	Animal *animals[10];
+	AAnimal *animals[10];
 	// test +100 idees
 	std::cout << "Start the creation of 10 animals" << std::endl;
 

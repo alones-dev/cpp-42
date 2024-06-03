@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:05:11 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/29 09:28:48 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:05:59 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,15 @@ int main(void)
 	dogBrain->setIdea(0, "I am a dog");
 	catBrain->setIdea(0, "I am a cat");
 
+	for (int i = 0; i < 150; i++)
+	{
+		dogBrain->setIdea(i, "I am a dog");
+		catBrain->setIdea(i, "I am a cat");
+	
+	}
 	std::cout << "Dog idea: " << dogBrain->getIdea(0) << std::endl;
 	std::cout << "Cat idea: " << catBrain->getIdea(0) << std::endl;
+	std::cout << "Dog idea: " << dogBrain->getIdea(-105) << std::endl;
 
 	return 0;
 }

@@ -6,13 +6,15 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:05:11 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/29 10:19:13 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:59:47 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main(void)
 {
@@ -31,6 +33,11 @@ int main(void)
 	
 	std::cout << std::endl;
 
+	const WrongAnimal* meta_w = new WrongAnimal();
+	const WrongAnimal* j_w = new WrongCat();
+	meta_w->makeSound();
+	j_w->makeSound();
+	
 	delete meta;
 	delete j;
 	delete i;

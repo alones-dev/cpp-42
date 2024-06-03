@@ -6,12 +6,12 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 09:26:36 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/05/29 10:20:51 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:00:44 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
 #include <iostream>
 
@@ -28,7 +28,7 @@ class WrongAnimal
 		WrongAnimal &operator=(WrongAnimal const &rhs);
 
 		std::string getType() const;
-		virtual void makeSound() const;
+		void makeSound() const;
 };
 
 #endif

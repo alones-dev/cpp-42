@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 12:27:58 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/03 14:48:23 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:12:52 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 int	defaultTest(void)
 {
 	std::cout << "Default test" << std::endl;
-	std::cout << "------------" << std::endl;
+	std::cout << "-----------" << std::endl;
+	
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -33,17 +34,19 @@ int	defaultTest(void)
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
-	std::cout << std::endl;
 	delete bob;
 	delete me;
 	delete src;
+	
+	std::cout << std::endl;
+
 	return (0);
 }
 
 int	customTest(void)
 {
 	std::cout << "Custom test" << std::endl;
-	std::cout << "------------" << std::endl;
+	std::cout << "-----------" << std::endl;
 	
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
@@ -59,11 +62,11 @@ int	customTest(void)
 	zbi->equip(tmp);
 	zbi->use(0, *zbi);
 	zbi->use(249844846, *zbi); 
-	zbi->use(-454654, *zbi);
-	zbi->use(2, *zbi);
+	zbi->use(-454654, *zbi); 
+	zbi->use(2, *zbi); 
 	zbi->unequip(0);
-	zbi->use(0, *zbi);
-	zbi->unequip(57527057);
+	zbi->use(0, *zbi); 
+	zbi->unequip(57527057); 
 	delete src;
 	delete zbi;
 	delete tmp;
