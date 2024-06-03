@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 12:29:31 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/03 10:05:30 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 12:09:13 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria
 {
