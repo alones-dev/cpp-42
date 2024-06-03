@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 09:57:34 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/03 10:56:57 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:58:50 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void Character::unequip(int idx)
 		std::cout << "Nothing found at this index..." << std::endl;
 		return;
 	}
-	// delete this->_inventory[idx];
 	this->_inventory[idx] = NULL;
 }
 

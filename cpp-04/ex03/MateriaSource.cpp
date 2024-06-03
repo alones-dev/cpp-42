@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:00:49 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/03 11:24:36 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:04:38 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void MateriaSource::learnMateria(AMateria *m)
 		}
 	}
 	std::cout << "Materia source is full" << std::endl;
+	delete m;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
@@ -63,7 +64,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	{
 		if (this->_source[i] && this->_source[i]->getType() == type)
 		{
-			std::cout << "Materia" << type << "created" << std::endl;
+			std::cout << "Materia " << type << " created" << std::endl;
 			return this->_source[i]->clone();
 		}
 	}
