@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 09:05:07 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/07 11:02:11 by kdaumont         ###   ########.fr       */
+/*   Created: 2024/06/07 10:01:10 by kdaumont          #+#    #+#             */
+/*   Updated: 2024/06/07 11:26:27 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form(std::string const name, int grade_to_sign, int grade_to_execute) : _name(name), _signed(false), _grade_to_sign(grade_to_sign), _grade_to_execute(grade_to_execute)
+AForm::AForm(std::string const name, int grade_to_sign, int grade_to_execute) : _name(name), _signed(false), _grade_to_sign(grade_to_sign), _grade_to_execute(grade_to_execute)
 {
 	if (grade_to_sign < 1 || grade_to_execute < 1)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	else if (grade_to_sign > 150 || grade_to_execute > 150)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }
 
-Form::Form(Form const &cpy) : _name(cpy.getName()), _signed(cpy.getSigned()), _grade_to_sign(cpy.getGradeToSign()), _grade_to_execute(cpy.getGradeToExecute())
+AForm::AForm(AForm const &cpy) : _name(cpy.getName()), _signed(cpy.getSigned()), _grade_to_sign(cpy.getGradeToSign()), _grade_to_execute(cpy.getGradeToExecute())
 {
 	*this = cpy;
 }
 
-Form::~Form()
+AForm::~AForm()
 {
 }
 
-Form &Form::operator=(Form const &rhs)
+AForm &AForm::operator=(AForm const &rhs)
 {
 	if (this != &rhs)
 	{
@@ -41,27 +41,27 @@ Form &Form::operator=(Form const &rhs)
 	return *this;
 }
 
-std::string Form::getName() const
+std::string AForm::getName() const
 {
 	return this->_name;
 }
 
-bool Form::getSigned() const
+bool AForm::getSigned() const
 {
 	return this->_signed;
 }
 
-int Form::getGradeToSign() const
+int AForm::getGradeToSign() const
 {
 	return this->_grade_to_sign;
 }
 
-int Form::getGradeToExecute() const
+int AForm::getGradeToExecute() const
 {
 	return this->_grade_to_execute;
 }
 
-void Form::beSigned(Bureaucrat const &signer)
+void AForm::beSigned(Bureaucrat const &signer)
 {
 	if (signer.getGrade() <= this->_grade_to_sign)
 	{
@@ -69,20 +69,30 @@ void Form::beSigned(Bureaucrat const &signer)
 		std::cout << signer.getName() << " signed " << this->_name << std::endl;
 	}
 	else
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }
 
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return "Grade is too high";
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return "Grade is too low";
 }
 
-std::ostream &operator<<(std::ostream &out, Form const &src)
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return "Form is not signed";
+}
+
+const char *AForm::CantOpenFileException::what() const throw()
+{
+	return "Can't open file";
+}
+
+std::ostream &operator<<(std::ostream &out, AForm const &src)
 {
 	out << "Form: " << src.getName() << " is ";
 	if (src.getSigned())
