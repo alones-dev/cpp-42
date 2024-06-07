@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:04:28 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/07 09:29:58 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/07 09:55:09 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void Bureaucrat::signForm(Form & form)
 	}
 	catch(const std::exception& e)
 	{
+		std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << "." << std::endl;
 	}
 	
 }

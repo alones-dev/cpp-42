@@ -26,7 +26,7 @@ WHITE			=	\033[1;37m
 #                                   PROGRAM                                    #
 # **************************************************************************** #
 
-NAME			=	bureaucrat
+NAME			=	form
 
 # **************************************************************************** #
 #                                   COMPILER                                   #
@@ -47,10 +47,12 @@ OBJ_PATH		=	.obj
 # **************************************************************************** #
 
 HEADERS			=	$(addsuffix .hpp, \
+					Form \
 					Bureaucrat)
 
 SRCS 			=	$(addsuffix .cpp, \
 					Bureaucrat \
+					Form \
 					main)
 
 OBJS			=	$(SRCS:%.cpp=$(OBJ_PATH)/%.o)

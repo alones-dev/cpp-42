@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 09:05:07 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/07 09:21:49 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/07 09:55:50 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ int Form::getGradeToExecute() const
 void Form::beSigned(Bureaucrat const &signer)
 {
 	if (signer.getGrade() <= this->_grade_to_sign)
+	{
 		this->_signed = true;
+		std::cout << signer.getName() << " signed " << this->_name << std::endl;
+	}
 	else
 		throw Form::GradeTooLowException();
 }
@@ -78,7 +81,7 @@ std::ostream &operator<<(std::ostream &out, Form const &src)
 {
 	out << "Form: " << src.getName() << " is ";
 	if (src.getSigned())
-		out << "signed";
+		out << "signed" << std::endl;
 	else
 		out << "not signed" << std::endl;
 	out << "Grade to sign the form: " << src.getGradeToSign() << std::endl;

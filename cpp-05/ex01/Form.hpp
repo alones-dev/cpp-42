@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 09:04:44 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/07 09:18:22 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/07 09:51:40 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
