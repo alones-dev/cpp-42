@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:04:13 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/04 12:24:01 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/07 08:55:52 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@ class Bureaucrat
 
 		std::string const getName() const;
 		int getGrade() const;
+
+	class GradeTooHighException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
+
+	class GradeTooLowException : public std::exception
+	{
+		public:
+			virtual const char *what() const throw();
+	};
 };
+
+std::ostream &operator<<(std::ostream &out, Bureaucrat const &src);
 
 #endif
