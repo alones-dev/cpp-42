@@ -26,7 +26,7 @@ WHITE			=	\033[1;37m
 #                                   PROGRAM                                    #
 # **************************************************************************** #
 
-NAME			=	form
+NAME			=	intern
 
 # **************************************************************************** #
 #                                   COMPILER                                   #
@@ -51,6 +51,7 @@ HEADERS			=	$(addsuffix .hpp, \
 					PresidentialPardonForm \
 					RobotomyRequestForm \
 					ShrubberyCreationForm \
+					Intern \
 					Bureaucrat)
 
 SRCS 			=	$(addsuffix .cpp, \
@@ -58,6 +59,7 @@ SRCS 			=	$(addsuffix .cpp, \
 					AForm \
 					PresidentialPardonForm \
 					RobotomyRequestForm \
+					Intern \
 					ShrubberyCreationForm \
 					main)
 
