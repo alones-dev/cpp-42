@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 10:02:15 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/07 12:32:31 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:10:39 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw AForm::GradeTooLowException();
 
 	std::cout << executor.getName() << " executed " << this->getName() << std::endl;
+
+	srand(time(0));
 
 	if (rand() % 2 == 0)
 		std::cout << "Drilling noises... " << this->getTarget() << " has been robotomized successfully." << std::endl;

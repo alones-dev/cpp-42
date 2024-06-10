@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:04:02 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/07 15:54:04 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:06:40 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 int main()
 {
+    
     Bureaucrat  jhon("Jhon", 50);
     Bureaucrat  emma("Emma", 2);
     Intern      someRandomIntern;
@@ -45,6 +46,7 @@ int main()
 
     std::cout << std::endl;
     delete someForm;
+    
 
 	return 0;
 }

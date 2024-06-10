@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 12:04:02 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/07 08:57:41 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/10 08:56:33 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int main()
         std::cout << "Unable to increment grade: " << e.what() << std::endl;
     }
     std::cout << std::endl;
-
 
 	return 0;
 }
