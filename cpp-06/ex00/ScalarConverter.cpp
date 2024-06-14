@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 18:33:43 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/14 11:14:40 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:40:22 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void toChar(std::string const & str)
 {
 	int value = std::atoi(str.c_str());
 	
-	if (str.size() == 1 && !std::isdigit(str[0]))
+	if (str.length() == 1 && !std::isdigit(str[0]))
 	{
 		std::cout << "char: '" << str << "'" << std::endl;
 		return;
