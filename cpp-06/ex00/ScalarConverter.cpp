@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 18:33:43 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/13 22:37:22 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:05:19 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,7 @@ int isPseudo(std::string const & str)
 void toChar(std::string const & str)
 {
 	int value = std::atoi(str.c_str());
-
-	if ((value >= 0 && value <= 31) || value == 127)
-	{
-		std::cout << "char: Non displayable" << std::endl;
-		return;
-	}
+	
 	if (str.size() == 1 && !std::isdigit(str[0]))
 	{
 		std::cout << "char: '" << str << "'" << std::endl;
@@ -80,6 +75,11 @@ void toChar(std::string const & str)
 	if (value >= 32 && value <= 126)
 	{
 		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
+		return;
+	}
+	if ((value >= 0 && value <= 31) || value == 127)
+	{
+		std::cout << "char: Non displayable" << std::endl;
 		return;
 	}
 	std::cout << "char: impossible" << std::endl;
