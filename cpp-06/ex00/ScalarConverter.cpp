@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 18:33:43 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/14 11:40:22 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:42:14 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,25 @@ int isPseudo(std::string const & str)
 	return (0);
 }
 
+bool isString(std::string const & str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (!isdigit(str[i]))
+			return false;
+	}
+	return true;
+}
+
 void toChar(std::string const & str)
 {
 	int value = std::atoi(str.c_str());
 	
+	if (str.length() > 1 && !isString(str))
+	{
+		std::cout << "char: impossible" << std::endl;
+		return;
+	}
 	if (str.length() == 1 && !std::isdigit(str[0]))
 	{
 		std::cout << "char: '" << str << "'" << std::endl;
@@ -118,7 +133,12 @@ void toFloat(std::string const & str)
 		else if (str.find('.') != std::string::npos && *end == 'f')
 			std::cout << "float: " << str << std::endl;
 		else
-			std::cout << "float: " << str << ".0f" << std::endl;
+		{
+			if (*end == 'f')
+				std::cout << "float: " << str.substr(0, str.length() - 1) << ".0f" << std::endl;
+			else
+				std::cout << "float: " << str << ".0f" << std::endl;
+		}
 	}
 	else
 		std::cout << "float: impossible" << std::endl;
@@ -148,7 +168,12 @@ void toDouble(std::string const & str)
 		else if (str.find('.') != std::string::npos && *end == 'f')
 			std::cout << "double: " << str.substr(0, str.length() - 1) << std::endl;
 		else
-			std::cout << "double: " << str << ".0" << std::endl;
+		{
+			if (*end == 'f')
+				std::cout << "double: " << str.substr(0, str.length() - 1) << ".0" << std::endl;
+			else
+				std::cout << "double: " << str << ".0" << std::endl;
+		}
 	}
 	else
 		std::cout << "double: impossible" << std::endl;

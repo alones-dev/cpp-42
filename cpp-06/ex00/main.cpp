@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 18:28:42 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/13 21:10:16 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:42:29 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int main(int ac, char **av)
     }
 
     ScalarConverter::convert(av[1]);    
-
+    
     return 0;
 }
