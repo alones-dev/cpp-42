@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 18:33:43 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/14 11:05:19 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:14:40 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ void toChar(std::string const & str)
 
 void toInt(std::string const & str)
 {
-	if (((str[0] == '-' || str[1] == '+') && isdigit(str[1])) || isdigit(str[0]))
+	if (str.length() == 1 && !isdigit(str[0]))
+		std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
+	else if (((str[0] == '-' || str[1] == '+') && isdigit(str[1])) || isdigit(str[0]))
 		std::cout << "int: " << static_cast<int>(std::atoi(str.c_str())) << std::endl;
 	else
 		std::cout << "int: impossible" << std::endl;
@@ -98,7 +100,9 @@ void toFloat(std::string const & str)
 	char *end;
 	float tmp = strtof(str.c_str(), &end);
 	
-	if ((str[0] == '-' || str[0] == '+') && isdigit(str[1]))
+	if (str.length() == 1 && !isdigit(str[0]))
+		std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;
+	else if ((str[0] == '-' || str[0] == '+') && isdigit(str[1]))
 	{
 		if (str.find('.') != std::string::npos && *end != 'f')
 			std::cout << "float: " << str << "f" << std::endl;
@@ -126,7 +130,9 @@ void toDouble(std::string const & str)
 	char *end;
 	float tmp = strtof(str.c_str(), &end);
 	
-	if ((str[0] == '-' || str[0] == '+') && isdigit(str[1]))
+	if (str.length() == 1 && !isdigit(str[0]))
+		std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;
+	else if ((str[0] == '-' || str[0] == '+') && isdigit(str[1]))
 	{
 		if (str.find('.') != std::string::npos && *end != 'f')
 			std::cout << "double: " << str << std::endl;
@@ -145,7 +151,7 @@ void toDouble(std::string const & str)
 			std::cout << "double: " << str << ".0" << std::endl;
 	}
 	else
-		std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;
+		std::cout << "double: impossible" << std::endl;
 	(void)tmp;
 }
 
