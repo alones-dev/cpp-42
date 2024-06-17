@@ -50,6 +50,7 @@
 		"limits": "cpp",
 		"numbers": "cpp",
 		"ranges": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"list": "cpp"
 	}
 }
