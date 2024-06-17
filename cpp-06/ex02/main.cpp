@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 11:17:01 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/14 14:12:58 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:56:33 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,10 @@ int main()
 	
 	
 	delete b1;
+	delete b2;
+	delete b3;
+	delete b4;
+	delete b5;
 
 	return 0;
 }
