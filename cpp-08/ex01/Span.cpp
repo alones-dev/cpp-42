@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 22:27:34 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/18 12:18:33 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:58:25 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,17 @@ int Span::shortestSpan()
 	std::vector<int> tmp(_array);
 	std::sort(tmp.begin(), tmp.end());
 	std::adjacent_difference(tmp.begin(), tmp.end(), tmp.begin());
+	
+	return *std::min_element(tmp.begin() + 1, tmp.end());
+}
+
+int Span::longestSpan()
+{
+	if (_array.size() <= 1)
+		throw Span::NoRangeException();
+
+	std::vector<int> tmp(_array);
+	std::sort(tmp.begin(), tmp.end());
+
+	return *std::max_element(tmp.begin(), tmp.end()) - *std::min_element(tmp.begin(), tmp.end());
 }
