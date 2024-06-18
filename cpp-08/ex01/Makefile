@@ -34,7 +34,7 @@ NAME			=	span
 
 CC				=	c++
 RM				=	rm -rf
-CFLAGS			+=	-Wall -Wextra -Werror -std=c++98
+CFLAGS			+=	-Wall -Wextra -Werror -std=c++98 -g3
 
 # **************************************************************************** #
 #                                    PATHS                                     #

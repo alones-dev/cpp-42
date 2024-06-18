@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 22:27:18 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/18 12:18:44 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:09:34 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <ctime>
 
 class Span
 {
@@ -32,9 +33,12 @@ class Span
         Span & operator=(Span const & rhs);
 
         void addNumber(int number);
+        void addNumberUltra(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
         int shortestSpan();
         int longestSpan();
+
+        void printArray();
 
         class ArrayFullException : public std::exception
         {

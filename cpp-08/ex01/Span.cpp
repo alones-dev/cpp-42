@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 22:27:34 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/18 14:58:25 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:22:47 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void Span::addNumber(int number)
 	_array.push_back(number);
 }
 
+void Span::addNumberUltra(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (_array.size() + std::distance(begin, end) > _size)
+        throw ArrayFullException();
+
+    _array.insert(_array.end(), begin, end);
+}
+
 int Span::shortestSpan()
 {
 	if (_array.size() <= 1)
@@ -63,4 +71,11 @@ int Span::longestSpan()
 	std::sort(tmp.begin(), tmp.end());
 
 	return *std::max_element(tmp.begin(), tmp.end()) - *std::min_element(tmp.begin(), tmp.end());
+}
+
+void Span::printArray()
+{
+	std::cout << "| ";
+	for (std::vector<int>::iterator it = _array.begin(); it != _array.end(); it++)
+		std::cout << *it << " | ";
 }
