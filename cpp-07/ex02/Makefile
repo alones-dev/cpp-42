@@ -34,7 +34,7 @@ NAME			=	array
 
 CC				=	c++
 RM				=	rm -rf
-CFLAGS			+=	-Wall -Wextra -Werror -std=c++98 -g3
+CFLAGS			+=	-Wall -Wextra -Werror -std=c++98 -I.
 
 # **************************************************************************** #
 #                                    PATHS                                     #
