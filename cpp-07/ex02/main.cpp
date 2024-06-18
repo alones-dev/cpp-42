@@ -1,53 +1,45 @@
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <Array.hpp>
 
-#define MAX_VAL 750
-int main(int, char**)
-{
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
+#define SIZE 10
+
+int main() {
+    Array<float> test;
+
+    try 
     {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
+        std::cout << "Accessing an invalid index: " << test[0] << "\n";
+    } 
+    catch (const std::exception& e) 
     {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
+        std::cerr << "Error: " << e.what() << "\n";
     }
 
-    for (int i = 0; i < MAX_VAL; i++)
+    Array<int> intArray(SIZE);
+    Array<int> intArray2(SIZE - 5);
+
+    std::cout << "Int Array 1: " << intArray << "\n";
+
+    for (unsigned int i = 0; i < intArray.size(); i++)
+        intArray[i] = i * 2;
+
+    std::cout << "Int Array 1: " << intArray << "\n";
+
+    intArray2 = intArray;
+
+    std::cout << "Int Array 2: " << intArray2 << "\n";
+
+    try 
     {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
+        std::cout << "Accessing a valid index: " << intArray[5] << "\n";
+        std::cout << "Accessing an invalid index: " << intArray[SIZE] << "\n";
     }
-    try
+    catch (const std::exception& e) 
     {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
+        std::cerr << "Error: " << e.what() << "\n";
     }
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
     return 0;
 }

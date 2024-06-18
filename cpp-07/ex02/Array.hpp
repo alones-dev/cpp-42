@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:02:58 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/17 21:39:59 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:51:12 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,13 @@ class Array
 				}
 		};
 };
+
+template <typename T>
+std::ostream & operator<<(std::ostream & o, Array<T> & rhs)
+{
+    for (unsigned int i = 0; i < rhs.size(); i++)
+        o << rhs[i] << " ";
+    return o;
+}
 
 #endif
