@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 22:27:18 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/17 22:31:59 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:18:44 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,43 @@
 #define SPAN_HPP
 
 #include <iostream>
+#include <exception>
+#include <vector>
+#include <algorithm>
+#include <numeric>
 
 class Span
 {
     private:
         unsigned int _size;
-        unsigned int _current;
-        int *_array;
+        std::vector<int> _array;
     public:
-        Span();
-        Span(unsigned int size);
-        Span(Span const & to_copy);
+        Span(unsigned int n);
+        Span(Span const & cpy);
         ~Span();
         
-        Span & operator=(Span const & to_copy);
+        Span & operator=(Span const & rhs);
 
         void addNumber(int number);
 
         int shortestSpan();
         int longestSpan();
+
+        class ArrayFullException : public std::exception
+        {
+            virtual const char *what() const throw()
+            {
+                return "Array is full";
+            }
+        };
+        
+        class NoRangeException : public std::exception
+        {
+            virtual const char *what() const throw()
+            {
+                return "No range to find";
+            }
+        };
 };
 
 #endif
