@@ -22,9 +22,16 @@ int main() {
 
     std::cout << "Int Array 1: " << intArray << "\n";
 
-    for (unsigned int i = 0; i < intArray.size(); i++)
-        intArray[i] = i * 2;
-
+    try
+    {
+        for (unsigned int i = 0; i < intArray.size(); i++)
+            intArray[i] = i * 2;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
     std::cout << "Int Array 1: " << intArray << "\n";
 
     intArray2 = intArray;
