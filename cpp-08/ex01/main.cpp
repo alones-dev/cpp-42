@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 22:27:07 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/18 19:23:12 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:28:40 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main()
 {
+    try
     {
         std::cout << "Subject test" << std::endl;
 
@@ -27,7 +28,12 @@ int main()
         std::cout << sp.shortestSpan() << std::endl;
         std::cout << sp.longestSpan() << std::endl;
     }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
     std::cout << std::endl;
+    try
     {
         std::cout << "Test with 50k elements" << std::endl;
 
@@ -39,7 +45,12 @@ int main()
         std::cout << "Shortest: " << sp.shortestSpan() << std::endl;
         std::cout << "Longest: " << sp.longestSpan() << std::endl;
     }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
     std::cout << std::endl;
+    try
     {
         std::cout << "Test ultra methods" << std::endl;
 
@@ -57,6 +68,10 @@ int main()
         std::cout << std::endl;
         std::cout << "Shortest: " << sp.shortestSpan() << std::endl;
         std::cout << "Longest: " << sp.longestSpan() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
     }
     std::cout << std::endl;
     {

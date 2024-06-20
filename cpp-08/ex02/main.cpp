@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:29:57 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/20 09:15:29 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/20 09:31:31 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ int main()
             std::cout << *it << std::endl;
             ++it;
         }
+
+        std::list<int> s(stack);
+
+        std::cout << std::endl << "New list values:" << std::endl;
+        while (!s.empty())
+        {
+            std::cout << s.back() << std::endl;
+            s.pop_back();
+        }
+        std::cout << "Final size: " << s.size() << std::endl;
     }
     
     return 0;
