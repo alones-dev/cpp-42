@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:04:06 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/20 17:05:42 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/20 22:14:45 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 class BitcoinExchange
 {
+	private:
+		std::map<std::string, float> _csv;
 	public:
 		BitcoinExchange();
 		BitcoinExchange(BitcoinExchange const & cpy);

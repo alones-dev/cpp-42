@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:03:56 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/20 17:11:49 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/20 23:51:41 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,20 @@ BitcoinExchange::~BitcoinExchange()
 
 BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const & cpy)
 {
-	(void)cpy;
+	if (this != &cpy)
+		_csv = cpy._csv;
 	return *this;
 }
 
-/* TODO :
-	- manage spaces ("      2024-06-06     |  5")
-	- 2147483647 -> invalid value (>  too large a number)
-*/
-
 void deleteSpace(std::string & str)
 {
-	if (str[0] == ' ')
-		str.erase(0, 1);
-	if (str[str.length() - 1] == ' ')
-		str.erase(str.length() - 1, 1);
+	std::size_t pos = str.find_first_not_of(" \t");
+	if (pos != std::string::npos)
+		str.erase(0, pos);
+
+	pos = str.find_last_not_of(" \t");
+	if (pos != std::string::npos)
+		str.erase(pos + 1);
 }
 
 int strtoint(std::string const & str)
@@ -56,7 +55,7 @@ int strtoint(std::string const & str)
 	return tmpInt;
 }
 
-std::map<int, int>monthsMap()
+std::map<int, int> monthsMap()
 {
 	std::map<int, int> months;
 	
@@ -76,40 +75,43 @@ std::map<int, int>monthsMap()
 	return months;
 }
 
-float checkValue(std::string & value)
+float checkValue(std::string & value, bool check)
 {
 	char *end;
 	float tmpFloat = strtof(value.c_str(), &end);
-	std::ostringstream oss;
-    oss << tmpFloat;
-    std::string tmpStr = oss.str();
 	
-	if (tmpStr != value)
+	if (check)
 	{
-		std::cerr << "Error: invalid value." << std::endl;
+		if (tmpFloat > 1000)
+		{
+			std::cerr << "Error: too large a number." << std::endl;
+			return -1;
+		}
+	}
+
+	if (tmpFloat == 0 && end == value.c_str())
+	{
+		if (check)
+			std::cerr << "Error: invalid value." << std::endl;
 		return -1;
 	}
 
 	if (tmpFloat < 0)
 	{
-		std::cerr << "Error: not a positive number." << std::endl;
-		return -1;
-	}
-
-	if (tmpFloat > static_cast<float>(2147483647))
-	{
-		std::cerr << "Error: too large a number." << std::endl;
+		if (check)
+			std::cerr << "Error: not a positive number." << std::endl;
 		return -1;
 	}
 
 	return tmpFloat;
 }
 
-std::string checkDate(std::string & date)
+std::string checkDate(std::string & date, bool check)
 {
-	if (date.length() != 10)
+	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
 	{
-		std::cerr << "Error: invalid date." << std::endl;
+		if (check)
+			std::cerr << "Error: invalid date format (YYYY-MM-DD)." << std::endl;
 		return "Error";
 	}
 	
@@ -119,37 +121,116 @@ std::string checkDate(std::string & date)
 
 	if (year < BTC_CREATION || year > ACT_DATE)
 	{
-		std::cerr << "Error: invalid year." << std::endl;
+		if (check)
+			std::cerr << "Error: invalid year." << std::endl;
 		return "Error";
 	}
 
 	if (month < 1 || month > 12)
 	{
-		std::cerr << "Error: invalid month." << std::endl;
+		if (check)
+			std::cerr << "Error: invalid month." << std::endl;
 		return "Error";
 	}
 
 	std::map<int, int> months = monthsMap();
 	if (day < 1 || day > months[month])
 	{
-		std::cerr << "Error: invalid day." << std::endl;
+		if (check)
+			std::cerr << "Error: invalid day." << std::endl;
 		return "Error";
 	}
 
 	return date;
 }
 
-void processInfos(std::string & date, std::string & value)
+void processInfos(std::string & date, std::string & value, std::map<std::string, float> & csv)
 {
-	float chekedValue = checkValue(value);
-	std::string chekedDate = checkDate(date);
+	float checkedValue = checkValue(value, true);
+	std::string checkedDate = checkDate(date, true);
 
-	if (chekedValue != -1 && chekedDate != "Error")
-		std::cout << date << " => " << value << std::endl;
+	if (checkedValue != -1 && checkedDate != "Error")
+	{
+		if (csv.find(date) != csv.end())
+			std::cout << date << " => " << value << " = " << csv[date] * checkedValue << std::endl;
+		else
+		{
+			std::map<std::string, float>::const_iterator it = csv.lower_bound(date);
+			if (it == csv.begin())
+				std::cout << "Error: no data for input => " << checkedDate << std::endl;
+			else
+			{
+				it--;
+				std::cout << date << " => " << value << " = " << it->second * checkedValue << std::endl;
+				return;
+			}
+		}
+	}
+}
+
+void parseCSV(std::map<std::string, float> & csv)
+{
+	std::ifstream inputFile(PATH_CSV);
+	if (!inputFile.is_open())
+	{
+		std::cerr << "Error: could not open file." << std::endl;
+		exit(1);
+	}
+
+	std::string line;
+
+	std::getline(inputFile, line);
+	if (line != "date,exchange_rate")
+	{
+		std::cerr << "Error: wrong database format." << std::endl;
+		inputFile.close();
+		exit(1);
+	}
+
+	while (inputFile.good())
+	{
+		std::size_t pos;
+		std::string date;
+		std::string value;
+		
+		std::getline(inputFile, line);
+		pos = line.find(",");
+		if (line.empty())
+			continue;
+		if (pos == std::string::npos)
+		{
+			std::cerr << "Error: wrong database input." << line << std::endl;
+			exit(1);
+		}
+		else
+		{
+			date = line.substr(0, pos);
+			deleteSpace(date);
+
+			value = line.substr(pos + 1, line.length());
+			deleteSpace(value);
+
+			if (checkValue(value, false) != -1 && checkDate(date, false) != "Error")
+				csv.insert(std::pair<std::string, float>(date, strtof(value.c_str(), NULL)));
+			else
+			{
+				std::cerr << "Error: invalid database (some dates or values invalid)." << std::endl;
+				exit(1);
+			}
+		}
+	}
+	
+	if (csv.empty())
+	{
+		std::cerr << "Error: empty database." << std::endl;
+		exit(1);
+	}
 }
 
 void BitcoinExchange::execute(std::string const & file)
 {
+	parseCSV(_csv);
+
 	std::ifstream inputFile(file.c_str());
 	if (!inputFile.is_open())
 	{
@@ -162,7 +243,7 @@ void BitcoinExchange::execute(std::string const & file)
 	std::getline(inputFile, line);
 	if (line != "date | value")
 	{
-		std::cerr << "Error: wrong format." << std::endl;
+		std::cerr << "Error: wrong file format." << std::endl;
 		inputFile.close();
 		return;
 	}
@@ -189,7 +270,7 @@ void BitcoinExchange::execute(std::string const & file)
 			value = line.substr(pos + 1, line.length());
 			deleteSpace(value);
 
-			processInfos(date, value);
+			processInfos(date, value, _csv);
 		}
 	}
 

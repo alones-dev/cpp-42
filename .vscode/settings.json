@@ -51,6 +51,7 @@
 		"numbers": "cpp",
 		"ranges": "cpp",
 		"span": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"map": "cpp"
 	}
 }

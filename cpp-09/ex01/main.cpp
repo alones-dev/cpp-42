@@ -5,24 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 13:04:51 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/20 23:55:52 by kdaumont         ###   ########.fr       */
+/*   Created: 2024/06/20 23:54:12 by kdaumont          #+#    #+#             */
+/*   Updated: 2024/06/20 23:56:28 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
 int main(int ac, char **av)
 {
-	if (ac != 2)
-	{
-		std::cout << "Error: could not open file." << std::endl;
-		return 1;
-	}
+    if (ac != 2)
+    {
+        std::cout << "Error: wrong number of arguments\n";
+        std::cout << "Usage: ./RPN [expression]" << std::endl;
+        return 1;
+    }
 
-	BitcoinExchange exchange;
-	
-	exchange.execute(av[1]);
-
-	return 0;
+    
+    
+    return 0;
 }
