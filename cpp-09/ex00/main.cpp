@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:04:51 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/19 15:59:02 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:39:47 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int main(int ac, char **av)
 		return 1;
 	}
 
+	BitcoinExchange exchange;
 	
+	exchange.execute(av[1]);
 
 	return 0;
 }
