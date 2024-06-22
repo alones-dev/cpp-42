@@ -17,11 +17,13 @@ int main(int ac, char **av)
     if (ac != 2)
     {
         std::cout << "Error: wrong number of arguments\n";
-        std::cout << "Usage: ./RPN [expression]" << std::endl;
+        std::cout << "Usage: ./RPN <expression>" << std::endl;
         return 1;
     }
 
-    
-    
+    RPN rpn;
+
+    rpn.execute(av[1]);
+
     return 0;
 }
