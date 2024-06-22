@@ -104,6 +104,47 @@ bool isValidRPN(std::string const & rpn)
     return true;
 }
 
+void addToQueue(std::queue<char> & rpn, std::string const & rpnStr)
+{
+    std::list<char> tmp;
+    for (size_t i = 0; i < rpnStr.size(); i++)
+    {
+        if (isValidValue(rpnStr[i], false))
+            tmp.push_back(rpnStr[i]);
+    }
+
+    bool addNumber = true;
+    while (!tmp.empty())
+    {
+        if (addNumber)
+        {
+            for (std::list<char>::iterator it = tmp.begin(); it != tmp.end(); it++)
+            {
+                if (isNumber(*it))
+                {
+                    rpn.push(*it);
+                    tmp.erase(it);
+                    break;
+                }
+            }
+            addNumber = false;
+        }
+        else
+        {
+            for (std::list<char>::iterator it = tmp.begin(); it != tmp.end(); it++)
+            {
+                if (isOperator(*it))
+                {
+                    rpn.push(*it);
+                    tmp.erase(it);
+                    break;
+                }
+            }
+            addNumber = true;
+        }
+    }
+}
+
 void RPN::execute(std::string const & rpn)
 {
     if (!isValidRPN(rpn))
@@ -112,5 +153,16 @@ void RPN::execute(std::string const & rpn)
         return;
     }
 
-    std::cout << "RPN: " << rpn << std::endl;
+    addToQueue(this->_rpn, rpn);
+
+    std::cout << "RPN: " << rpn << std::endl << std::endl;
+    std::cout << "Result: ";
+
+    while (!this->_rpn.empty())
+    {
+        std::cout << this->_rpn.front();
+        this->_rpn.pop();
+    }
+
+    std::cout << std::endl;
 }

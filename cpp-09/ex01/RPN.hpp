@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <queue>
+#include <list>
 
 class RPN
 {
