@@ -27,38 +27,26 @@ RPN::~RPN()
 
 RPN & RPN::operator=(RPN const & rhs)
 {
-    if (this != &rhs)
-        this->_rpn = rhs._rpn;
+    (void)rhs;
     return *this;
 }
 
 bool isNumber(char c)
 {
-    if (c >= '0' && c <= '9')
-        return true;
-    return false;
+    return c >= '0' && c <= '9';
 }
 
 bool isOperator(char c)
 {
-    if (c == '+' || c == '-' || c == '*' || c == '/')
-        return true;
-    return false;
+    return c == '+' || c == '-' || c == '*' || c == '/';
 }
 
 bool isValidValue(char c, bool checkSpace)
 {
-    if (isNumber(c))
-        return true;
-    if (isOperator(c))
-        return true;
-    if (checkSpace)
-        if (c == ' ' || c == '\t')
-            return true;
-    return false;
+    return isNumber(c) || isOperator(c) || (checkSpace && (c == ' ' || c == '\t'));
 }
 
-bool isValidRPN(std::string const & rpn)
+bool isValidRPN(std::string const &rpn)
 {
     int countNb = 0;
     int countOperator = 0;
@@ -66,7 +54,7 @@ bool isValidRPN(std::string const & rpn)
     if (rpn.empty())
         return false;
 
-    for (size_t i = 0; i < rpn.size(); i++)
+    for (size_t i = 0; i < rpn.size() - 1; i++)
     {
         if (isValidValue(rpn[i], false) && isValidValue(rpn[i + 1], false))
             return false;
@@ -104,48 +92,34 @@ bool isValidRPN(std::string const & rpn)
     return true;
 }
 
-void addToQueue(std::queue<char> & rpn, std::string const & rpnStr)
+int evaluateRPN(std::string const &rpn)
 {
-    std::list<char> tmp;
-    for (size_t i = 0; i < rpnStr.size(); i++)
+    std::stack<int> s;
+    for (size_t i = 0; i < rpn.size(); i++)
     {
-        if (isValidValue(rpnStr[i], false))
-            tmp.push_back(rpnStr[i]);
-    }
-
-    bool addNumber = true;
-    while (!tmp.empty())
-    {
-        if (addNumber)
+        if (isNumber(rpn[i]))
+            s.push(rpn[i] - '0');
+        else if (isOperator(rpn[i]))
         {
-            for (std::list<char>::iterator it = tmp.begin(); it != tmp.end(); it++)
+            int op2 = s.top(); 
+            s.pop();
+            int op1 = s.top(); 
+            s.pop();
+            int result = 0;
+            switch (rpn[i])
             {
-                if (isNumber(*it))
-                {
-                    rpn.push(*it);
-                    tmp.erase(it);
-                    break;
-                }
+                case '+': result = op1 + op2; break;
+                case '-': result = op1 - op2; break;
+                case '*': result = op1 * op2; break;
+                case '/': result = op1 / op2; break;
             }
-            addNumber = false;
-        }
-        else
-        {
-            for (std::list<char>::iterator it = tmp.begin(); it != tmp.end(); it++)
-            {
-                if (isOperator(*it))
-                {
-                    rpn.push(*it);
-                    tmp.erase(it);
-                    break;
-                }
-            }
-            addNumber = true;
+            s.push(result);
         }
     }
+    return s.top();
 }
 
-void RPN::execute(std::string const & rpn)
+void RPN::execute(std::string const &rpn)
 {
     if (!isValidRPN(rpn))
     {
@@ -153,16 +127,7 @@ void RPN::execute(std::string const & rpn)
         return;
     }
 
-    addToQueue(this->_rpn, rpn);
+    int result = evaluateRPN(rpn);
 
-    std::cout << "RPN: " << rpn << std::endl << std::endl;
-    std::cout << "Result: ";
-
-    while (!this->_rpn.empty())
-    {
-        std::cout << this->_rpn.front();
-        this->_rpn.pop();
-    }
-
-    std::cout << std::endl;
+    std::cout << result << std::endl;
 }

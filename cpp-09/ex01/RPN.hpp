@@ -17,11 +17,10 @@
 #include <string>
 #include <queue>
 #include <list>
+#include <stack>
 
 class RPN
 {
-    private:
-        std::queue<char> _rpn;
     public:
         RPN();
         RPN(RPN const & cpy);
