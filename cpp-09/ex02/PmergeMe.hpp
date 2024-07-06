@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:24:42 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/27 14:32:58 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/07 00:13:01 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,13 @@ class PmergeMe
         PmergeMe &operator=(const PmergeMe &rhs);
 
         static time_t processVector(char **av, std::vector<int> &vec);
-        time_t processDeque(char **av, std::deque<int> &dq);
+        static time_t processDeque(char **av, std::deque<int> &dq);
 };
+
+template <typename T>
+void mergeSort(T & vec)
+{
+    
+}
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:26:17 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/27 14:39:32 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/07 00:11:09 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int main(int ac, char **av)
     }
 
     std::vector<int> vec;
-    time_t sortVector = PmergeMe::processVector(av, vec);
-
-    printInfos(av, vec, vec.size(), sortVector, 0);
+    // time_t sortVector = PmergeMe::processVector(av, vec);
+    PmergeMe::processVector(av, vec);
+    // printInfos(av, vec, vec.size(), sortVector, 0);
 
     return 0;
 }

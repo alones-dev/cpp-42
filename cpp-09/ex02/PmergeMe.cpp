@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:25:47 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/27 14:37:12 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/07 00:12:01 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,36 @@ bool checkArguments(char **av)
     return (true);
 }
 
+void sortVector(std::vector<int> & vec)
+{
+    bool isPair = vec.size() % 2;
+    std::vector< std::pair<int, int> > pairVec;
+    std::pair<int, int> tmp;
+
+    pairVec.resize(vec.size() / 2);
+    for (std::size_t i = 0; i < vec.size(); i++)
+    {
+        if (isPair && i + 1 == vec.size())
+        {
+            tmp.first = vec[i];
+            tmp.second = 0;
+        }
+        else if (i % 2 == 0)
+            pairVec[i / 2].first = vec[i];
+        else
+            pairVec[i / 2].second = vec[i];
+    }
+
+    vec.clear();
+    for (std::vector< std::pair<int, int> >::iterator it = pairVec.begin(); it != pairVec.end(); it++)
+    {
+        if (it->first > it->second)
+            std::swap(it->first, it->second);
+    }
+
+    
+}
+
 time_t PmergeMe::processVector(char **av, std::vector<int> & vec)
 {
     if (!checkArguments(av))
@@ -73,8 +103,8 @@ time_t PmergeMe::processVector(char **av, std::vector<int> & vec)
 
     for (int i = 1; av[i]; i++)
         vec.push_back(atoi(av[i]));
-        
-    std::sort(vec.begin(), vec.end());
+
+    sortVector(vec);
     
     gettimeofday(&end, NULL);
 
@@ -92,11 +122,8 @@ time_t PmergeMe::processDeque(char **av, std::deque<int> & dq)
     struct timeval start, end;
     gettimeofday(&start, NULL);
 
-    for (int i = 1; av[i]; i++)
-        dq.push_back(atoi(av[i]));
-    
-    std::sort(dq.begin(), dq.end());
-
+    // sort deque
+    (void)dq;
     gettimeofday(&end, NULL);
 
     return ((end.tv_sec * 1000000 + end.tv_usec) - (start.tv_sec * 1000000 + start.tv_usec));
