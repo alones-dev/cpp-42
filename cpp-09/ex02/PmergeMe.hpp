@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:24:42 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/07/07 14:22:51 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/07 19:19:18 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void mergeSort2(T & vec, T & left, T & right)
 {
     vec.clear();
 
-    int i = 0;
-    int j = 0;
+    std::size_t i = 0;
+    std::size_t j = 0;
 
     while (i < left.size() && j < right.size())
     {
@@ -119,29 +119,27 @@ T groupSizes(int elt)
     {
         sizes.push_back(cur);
         sum += cur;
-        cur *= 2;
         i++;
+        if (i < 2)
+            cur = sizes[i - 1];
+        else
+            cur = sizes[i - 2] * 2 + sizes[i - 1];
     }
+
+    if (sum < elt)
+        sizes.push_back(elt - sum);
+
+    return (sizes);
 }
 
 template <typename T>
 void printContainer(T & container)
 {
+
     for (std::size_t i = 0; i < container.size(); i++)
         std::cout << container[i] << " ";
-    std::cout << std::endl;
-}
-
-template <typename T>
-bool isSorted(T & container)
-{
-    for (std::size_t i = 0; i < container.size() - 1; i++)
-    {
-        if (container[i] > container[i + 1])
-            return (false);
-    }
-
-    return (true);
+     std::cout << std::endl;
+  
 }
 
 #endif

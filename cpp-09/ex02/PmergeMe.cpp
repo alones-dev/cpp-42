@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:25:47 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/07/07 14:05:03 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/07 19:27:52 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,22 @@ void sortVector(std::vector<int> & vec)
     if (isPair)
         pairVec.push_back(tmp);
 
-    
+    // Insertion sort
+    std::vector<std::size_t> groupSize = groupSizes< std::vector<std::size_t> >(pairVec.size());
+
+    size_t iterOdd = 0;
+	for (size_t i = 0; i < groupSize.size(); i++)
+	{
+		for (size_t j = groupSize[i]; j > 0; j--)
+		{
+			int x = pairVec[iterOdd + j - 1].first;
+			std::vector<int>::iterator it = vec.begin();
+			while (it < vec.end() - 1 && x > *it)
+				it++;
+			vec.insert(it, x);
+		}	
+		iterOdd += groupSize[i];
+	}
 }
 
 time_t PmergeMe::processVector(char **av, std::vector<int> & vec)
