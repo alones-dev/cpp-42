@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:25:47 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/07/07 19:27:52 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/07 21:48:14 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,42 +100,102 @@ void sortVector(std::vector<int> & vec)
             vec.push_back(it->first);
         vec.push_back(it->second);
     }
+    pairVec.erase(pairVec.begin());
     if (isPair)
         pairVec.push_back(tmp);
 
     // Insertion sort
     std::vector<std::size_t> groupSize = groupSizes< std::vector<std::size_t> >(pairVec.size());
 
-    size_t iterOdd = 0;
-	for (size_t i = 0; i < groupSize.size(); i++)
-	{
-		for (size_t j = groupSize[i]; j > 0; j--)
-		{
-			int x = pairVec[iterOdd + j - 1].first;
-			std::vector<int>::iterator it = vec.begin();
-			while (it < vec.end() - 1 && x > *it)
-				it++;
-			vec.insert(it, x);
-		}	
-		iterOdd += groupSize[i];
-	}
+    std::size_t k = 0;
+    for (std::size_t i = 0; i < groupSize.size(); i++)
+    {
+        for (std::size_t j = groupSize[i]; j > 0; j--)
+        {
+            int x = pairVec[k + j - 1].first;
+            int pos = binarySearch(vec, x);
+            vec.insert(vec.begin() + pos, x);
+        }
+        k += groupSize[i];
+    }
+}
+
+void sortDeque(std::deque<int> & dq)
+{
+    bool isPair = dq.size() % 2;
+    std::deque< std::pair<int, int> > pairDq;
+    std::pair<int, int> tmp;
+
+    // Pairs creation
+    pairDq.resize(dq.size() / 2);
+    for (std::size_t i = 0; i < dq.size(); i++)
+    {
+        if (isPair && i + 1 == dq.size())
+        {
+            tmp.first = dq[i];
+            tmp.second = 0;
+        }
+        else if (i % 2 == 0)
+            pairDq[i / 2].first = dq[i];
+        else
+            pairDq[i / 2].second = dq[i];
+    }
+
+    dq.clear();
+    
+    // Sort pairs
+    for (std::deque< std::pair<int, int> >::iterator it = pairDq.begin(); it != pairDq.end(); it++)
+    {
+        if (it->first > it->second)
+            std::swap(it->first, it->second);
+    }
+
+    // Merge sort (fusion sort)
+    mergeSort(pairDq);
+
+    // Fill deque with merge sorted values
+    for (std::deque< std::pair<int, int> >::iterator it = pairDq.begin(); it != pairDq.end(); it++)
+    {
+        if (it == pairDq.begin())
+            dq.push_back(it->first);
+        dq.push_back(it->second);
+    }
+    pairDq.erase(pairDq.begin());
+    if (isPair)
+        pairDq.push_back(tmp);
+
+    // Insertion sort
+    std::deque<std::size_t> groupSize = groupSizes< std::deque<std::size_t> >(pairDq.size());
+
+    std::size_t k = 0;
+    for (std::size_t i = 0; i < groupSize.size(); i++)
+    {
+        for (std::size_t j = groupSize[i]; j > 0; j--)
+        {
+            int x = pairDq[k + j - 1].first;
+            int pos = binarySearch(dq, x);
+            dq.insert(dq.begin() + pos, x);
+        }
+        k += groupSize[i];
+    }
 }
 
 time_t PmergeMe::processVector(char **av, std::vector<int> & vec)
 {
+    struct timeval start, end;
+    gettimeofday(&start, NULL);
+    
     if (!checkArguments(av))
     {
         std::cout << "Error: bad arguments type" << std::endl;
         exit(1);
     }
 
-    struct timeval start, end;
-    gettimeofday(&start, NULL);
-
     for (int i = 1; av[i]; i++)
         vec.push_back(atoi(av[i]));
 
-    sortVector(vec);
+    if (!isSorted(vec))
+        sortVector(vec);
     
     gettimeofday(&end, NULL);
 
@@ -144,17 +204,21 @@ time_t PmergeMe::processVector(char **av, std::vector<int> & vec)
 
 time_t PmergeMe::processDeque(char **av, std::deque<int> & dq)
 {
+    struct timeval start, end;
+    gettimeofday(&start, NULL);
+    
     if (!checkArguments(av))
     {
         std::cout << "Error: bad arguments type" << std::endl;
         exit(1);
     }
 
-    struct timeval start, end;
-    gettimeofday(&start, NULL);
+    for (int i = 1; av[i]; i++)
+        dq.push_back(atoi(av[i]));
 
-    // sort deque
-    (void)dq;
+    if (!isSorted(dq))
+        sortDeque(dq);
+
     gettimeofday(&end, NULL);
 
     return ((end.tv_sec * 1000000 + end.tv_usec) - (start.tv_sec * 1000000 + start.tv_usec));

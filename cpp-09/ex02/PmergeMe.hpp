@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:24:42 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/07/07 19:19:18 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/07 21:39:07 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,18 @@ void printContainer(T & container)
         std::cout << container[i] << " ";
      std::cout << std::endl;
   
+}
+
+template <typename T>
+bool isSorted(T & container)
+{
+    for (std::size_t i = 1; i < container.size(); i++)
+    {
+        if (container[i - 1] > container[i])
+            return (false);
+    }
+
+    return (true);
 }
 
 #endif
