@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 22:25:47 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/07/07 00:12:01 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/07 14:05:03 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void sortVector(std::vector<int> & vec)
     std::vector< std::pair<int, int> > pairVec;
     std::pair<int, int> tmp;
 
+    // Pairs creation
     pairVec.resize(vec.size() / 2);
     for (std::size_t i = 0; i < vec.size(); i++)
     {
@@ -81,11 +82,26 @@ void sortVector(std::vector<int> & vec)
     }
 
     vec.clear();
+    
+    // Sort pairs
     for (std::vector< std::pair<int, int> >::iterator it = pairVec.begin(); it != pairVec.end(); it++)
     {
         if (it->first > it->second)
             std::swap(it->first, it->second);
     }
+
+    // Merge sort (fusion sort)
+    mergeSort(pairVec);
+
+    // Fill vec with merge sorted values
+    for (std::vector< std::pair<int, int> >::iterator it = pairVec.begin(); it != pairVec.end(); it++)
+    {
+        if (it == pairVec.begin())
+            vec.push_back(it->first);
+        vec.push_back(it->second);
+    }
+    if (isPair)
+        pairVec.push_back(tmp);
 
     
 }
