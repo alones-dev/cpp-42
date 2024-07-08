@@ -6,7 +6,7 @@
 /*   By: kdaumont <kdaumont@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:03:56 by kdaumont          #+#    #+#             */
-/*   Updated: 2024/06/20 23:51:41 by kdaumont         ###   ########.fr       */
+/*   Updated: 2024/07/08 09:47:04 by kdaumont         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,12 @@ std::string checkDate(std::string & date, bool check)
 			std::cerr << "Error: invalid month." << std::endl;
 		return "Error";
 	}
-
+	
 	std::map<int, int> months = monthsMap();
 	if (day < 1 || day > months[month])
 	{
+		if (month == 2 && day == 29 && year % 4 == 0)
+			return date;
 		if (check)
 			std::cerr << "Error: invalid day." << std::endl;
 		return "Error";
